@@ -39,13 +39,15 @@
             <input type="text" class="form-control" placeholder="name" ng-model="newuser.name" />
             <input type="text" class="form-control" placeholder="username" ng-model="newuser.username" />
             <input type="text" class="form-control" placeholder="email" ng-model="newuser.email" />
-            <input type="submit" class="btn" value="Add user"/>
+            <input type="submit" class="btn" value="Add user" />
         </form>
     </div>
     <div id="response">
         <h2>Raw REST response</h2>
+        <h4>From</h4>
+        <pre>https://jsonplaceholder.typicode.com/users</pre>
         <pre>
-                {{response | json}}
+            {{response | json}}
         </pre>
     </div>
 </div>
