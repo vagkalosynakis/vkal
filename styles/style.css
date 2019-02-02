@@ -152,3 +152,12 @@ thead{
     display: flex;
     justify-content: space-between;
 }
+
+#composite{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#composite i{
+    cursor: pointer;
+}

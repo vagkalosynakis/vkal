@@ -23,10 +23,28 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 myApp.controller('controller1', ['$scope', '$http', function ($scope, $http) {
 
+    $scope.addUser = function (users) {
+        var arrays = document.getElementsByTagName("tr");
+        $scope.users.push({
+            id: arrays.length,
+            name: $scope.newuser.name,
+            username: $scope.newuser.username,
+            email: $scope.newuser.email
+        });
+
+        $scope.newuser.name = "";
+        $scope.newuser.username = "";
+        $scope.newuser.email = "";
+    };
+
+    $scope.removeUser = function (user) {
+        var removedUser = $scope.users.indexOf(user);
+        $scope.users.splice(removedUser, 1);
+    };
+
     $http.get('https://jsonplaceholder.typicode.com/users')
         .then(function (response) {
             $scope.users = response.data;
             $scope.response = response;
         });
-
 }]);
