@@ -1,0 +1,40 @@
+<div id="rest">
+    <div>
+        <h2>REST to Table data</h2>
+    </div>
+    <div id="controls">
+        <button id="btn1" ng-click="order = 'name'" class="btn btn-primary">Order by Name</button>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">#</span>
+            <input name="searching" ng-model="search" placeholder="Search by name..." type="text" class="form-control"
+                placeholder="Name" aria-describedby="basic-addon1">
+        </div>
+        <button id="btn2" ng-click="order = 'id'" class="btn btn-primary">Order by Id</button>
+    </div>
+    <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users | orderBy: order | filter: search">
+                    <th>{{user.id}}</th>
+                    <td>{{user.name}}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="response">
+        <h2>Raw REST response</h2>
+        <pre>
+                {{response | json}}
+        </pre>
+    </div>
+</div>

@@ -9,7 +9,12 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         .when('/info', {
             templateUrl: 'views/info.html',
             controller: 'controller1'
-        }).otherwise({
+        })
+        .when('/rest', {
+            templateUrl: 'views/rest.html',
+            controller: 'controller1'
+        })
+        .otherwise({
             redirectTo: '/home'
         });
 
@@ -18,6 +23,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 myApp.controller('controller1', ['$scope', '$http', function ($scope, $http) {
 
-    
+    $http.get('https://jsonplaceholder.typicode.com/users')
+        .then(function (response) {
+            $scope.users = response.data;
+            $scope.response = response;
+        });
 
 }]);
